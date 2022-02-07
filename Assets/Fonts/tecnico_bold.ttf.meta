@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: aaad51166a549b047b8bc6a0251cb869
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Tecnico
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 29a39916d3d5a7548afb328fbfea207c, type: 3}
+  - {fileID: 12800000, guid: 37a1d77f618184447a7ff2623d9a77e4, type: 3}
+  - {fileID: 12800000, guid: 32f20a4c7ca31064ebb7d6f22308dd7f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
