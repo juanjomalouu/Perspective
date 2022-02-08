@@ -55,13 +55,15 @@
   <ItemGroup>
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\Script\ObjectMovement.cs" />
+    <Compile Include="Assets\Script\Countdown.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\Demonstration_MeshProcessing.cs" />
+    <Compile Include="Assets\Script\AnswerInfo.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\Demonstration_NoclipController.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\EdgeDetect.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\MeshProcessor.cs" />
-    <Compile Include="Assets\Script\Countdown.cs" />
-    <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\AnswerInfo.cs" />
+    <Compile Include="Assets\Script\UIManager.cs" />
+    <Compile Include="Assets\Script\score.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\OutlineToolkit\Shader\EdgeDetect.shader" />

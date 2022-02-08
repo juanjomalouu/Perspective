@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject listIsometric;
     [SerializeField] private GameObject listViews;
     [SerializeField] private Countdown countdown;
-
+    [SerializeField] private Score score;
+    
     private GameObject isometricFigure;
     private GameObject viewFigure;
 
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] listObjectsIsometrics;
     public GameObject[] listObjectsViews;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,20 +70,12 @@ public class GameManager : MonoBehaviour
         isometricFigure.SetActive(true);
         viewFigure.SetActive(true);
         answer = isometricFigure.GetComponent<AnswerInfo>().answer;
-        //isometricFigure = listIsometric.transform.GetChild(index).gameObject;
-        //viewFigure = listViews.transform.GetChild(index).gameObject;
-        //isometricFigure.SetActive(true);
-        //viewFigure.SetActive(true);
-        ////listViews.transform.GetChild(index).gameObject.SetActive(true);
-        //answer = isometricFigure.GetComponent<AnswerInfo>().answer;
     }
     private void deleteFigures(int index)
     {
         
         Destroy(isometricFigure);
         Destroy(viewFigure);
-        //listIsometric.transform.GetChild(figureValue).gameObject.SetActive(false);
-        //listViews.transform.GetChild(figureValue).gameObject.SetActive(false);
         figureValue++;
 
     }
@@ -90,13 +86,12 @@ public class GameManager : MonoBehaviour
             correct = true;
             deleteFigures(figureValue);
             activateFigures(figureValue);
-            Debug.Log("Correcto");
+            score.score += 100;
         }
         else
         {
             correct = false;
             countdown.minusTimer();
-            Debug.Log("Incorrecto");
         }
     }
     public void checkElevation()
@@ -106,13 +101,12 @@ public class GameManager : MonoBehaviour
             correct = true;
             deleteFigures(figureValue);
             activateFigures(figureValue);
-            Debug.Log("Correcto");
+            score.score += 100 +(int)countdown.currentTime;
 
         }
         else
         {
             correct = false;
-            Debug.Log("Incorrecto");
             countdown.minusTimer();
         }
        
@@ -124,12 +118,11 @@ public class GameManager : MonoBehaviour
             correct = true;
             deleteFigures(figureValue);
             activateFigures(figureValue);
-            Debug.Log("Correcto");
+            score.score += 100;
         }
         else
         {
             correct = false;
-            Debug.Log("Incorrecto");
             countdown.minusTimer();
         }
     }

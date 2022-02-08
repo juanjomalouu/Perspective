@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Countdown : MonoBehaviour
 {
-    float currentTime = 0f;
-    float startingTime = 60f;
+    public float currentTime = 0f;
+    float startingTime = 30f;
 
     public Text countdownText;
 
@@ -27,12 +27,12 @@ public class Countdown : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
-           //SceneManager.LoadScene("GameOver");
+           SceneManager.LoadScene("Score2");
         }
     }
 
     public void minusTimer()
     {
-        currentTime -= 10;
+        currentTime -= 5;
     }
 }
