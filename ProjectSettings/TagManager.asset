@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Figure
+  - Score
   layers:
   - Default
   - TransparentFX

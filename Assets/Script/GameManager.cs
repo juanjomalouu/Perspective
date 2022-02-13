@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour
 {
     private int answer;
     private int figureValue;
-    bool correct;
+
     [SerializeField] private GameObject listIsometric;
     [SerializeField] private GameObject listViews;
     [SerializeField] private Countdown countdown;
-    [SerializeField] private Score score;
+    private Score score;
     
     private GameObject isometricFigure;
     private GameObject viewFigure;
@@ -22,11 +22,16 @@ public class GameManager : MonoBehaviour
     public GameObject[] listObjectsIsometrics;
     public GameObject[] listObjectsViews;
 
+    [SerializeField] AudioSource soundEffect;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        score = GameObject.FindObjectOfType<Score>();
+        score.score = 0;
+        score.time = true;
         figureValue = 0;
         createList(listIsometric.transform.childCount);
         Shuffle();
@@ -46,7 +51,6 @@ public class GameManager : MonoBehaviour
 
     void Shuffle()
     {
-        Debug.Log(listObjectsIsometrics.Length);
         for(int i = 0; i < listObjectsIsometrics.Length; i++)
         {
             int rnd = Random.Range(0, listObjectsIsometrics.Length);
@@ -65,11 +69,20 @@ public class GameManager : MonoBehaviour
     
     private void activateFigures(int index)
     {
-        isometricFigure = listObjectsIsometrics[index];
-        viewFigure = listObjectsViews[index];
-        isometricFigure.SetActive(true);
-        viewFigure.SetActive(true);
-        answer = isometricFigure.GetComponent<AnswerInfo>().answer;
+        
+        if (index==listObjectsIsometrics.Length)
+        {
+            SceneManager.LoadScene("Score2");
+            score.time = false;
+        }
+        else
+        {
+            isometricFigure = listObjectsIsometrics[index];
+            viewFigure = listObjectsViews[index];
+            isometricFigure.SetActive(true);
+            viewFigure.SetActive(true);
+            answer = isometricFigure.GetComponent<AnswerInfo>().answer;
+        }
     }
     private void deleteFigures(int index)
     {
@@ -83,14 +96,13 @@ public class GameManager : MonoBehaviour
     {
         if (answer == 1)
         {
-            correct = true;
             deleteFigures(figureValue);
             activateFigures(figureValue);
-            score.score += 100;
+            score.score += 100 + (int)countdown.currentTime;
+            soundEffect.Play();
         }
         else
         {
-            correct = false;
             countdown.minusTimer();
         }
     }
@@ -98,15 +110,13 @@ public class GameManager : MonoBehaviour
     {
         if (answer == 0)
         {
-            correct = true;
             deleteFigures(figureValue);
             activateFigures(figureValue);
             score.score += 100 +(int)countdown.currentTime;
-
+            soundEffect.Play();
         }
         else
         {
-            correct = false;
             countdown.minusTimer();
         }
        
@@ -115,14 +125,13 @@ public class GameManager : MonoBehaviour
     {
         if (answer == 2)
         {
-            correct = true;
             deleteFigures(figureValue);
             activateFigures(figureValue);
-            score.score += 100;
+            score.score += 100 + (int)countdown.currentTime;
+            soundEffect.Play();
         }
         else
         {
-            correct = false;
             countdown.minusTimer();
         }
     }
